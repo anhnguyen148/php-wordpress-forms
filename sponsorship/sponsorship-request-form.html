@@ -1,0 +1,95 @@
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+  <style>
+    * {
+      font-size: 18px
+    }
+
+    .col-form-label,
+    label.form-label {
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    input.form-control,
+    textarea.form-control {
+      border-color: #D3D3D3;
+    }
+
+    .form-check-label {
+      line-height: 25px
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="container pb-5">
+    <div class="row">
+      <div class="col-lg-3 col-md-0 col-sm-0">
+      </div>
+      <div class="col-lg-6 col-md-12 col-sm-12">
+        <form action="../../wp-admin/sponsorship-request-form.php" method="POST" enctype="multipart/form-data">
+          <fieldset>
+            <div class="row pb-2">
+              <div class="pb-3">
+                <label for="orgName" class="form-label">Name of Organization: </label>
+                <input type="text" name="org_name" id="orgName" class="form-control" placeholder="Enter here" required />
+              </div>
+              <div class="pb-3">
+                <label for="contactName" class="form-label">Name of Contact Person: </label>
+                <input type="text" name="contact_name" id="contactName" class="form-control" placeholder="Enter here" required />
+              </div>
+              <div class="pb-3">
+                <label for="email" class="form-label">Email of Contact Person: </label>
+                <input type="text" name="email" id="email" class="form-control" placeholder="example@gmail.com" required />
+              </div>
+              <div class="pb-3">
+                <label for="phone" class="form-label">Phone Number of Contact Person: </label>
+                <input type="text" name="phone" id="phone" class="form-control" placeholder="Enter here" required />
+              </div>
+              <div class="pb-3">
+                <label for="website" class="form-label">Organization Website: </label>
+                <input type="text" name="website" id="website" class="form-control" placeholder="https://example.com/" required />
+              </div>
+              <div class="pb-3">
+                <label for="eventName" class="form-label">Event Name: </label>
+                <input type="text" name="event_name" id="eventName" class="form-control" placeholder="Enter here" required />
+              </div>
+              <div class="pb-3">
+                <label for="eventDate" class="form-label">Event Date: </label>
+                <input type="date" name="event_date" id="eventDate" class="form-control" placeholder="Enter here" required />
+              </div>
+              <div class="pb-3">
+                <label for="location" class="form-label">Event Location: </label>
+                <input type="text" name="location" id="location" class="form-control" placeholder="Enter here" required />
+              </div>
+              <div class="pb-3">
+                <label for="desc" class="form-label">Event Description: </label>
+                <textarea name="desc" id="desc" class="form-control" placeholder="Enter here" required></textarea>
+              </div>
+              <div class="pb-3">
+                <label for="amount" class="form-label">Amount Requested: </label>
+                <input type="number" name="amount" id="amount" class="form-control" placeholder="$0.00" required />
+              </div>
+              <div class="pb-3">
+                <label for="doc" class="form-label">Please upload supporting documentation (official sponsorship information, event announcement, and any other information about your organization you would like to share with us): <i><strong>(pdf or image)</strong> </i><br><i>To attach multiple files, please hold Ctrl and left click on all files you want to include. All files must be uploaded at one time.</i></label>
+                <input class="pt-2" type="file" id="doc" name="supporting_doc[]" multiple required />
+              </div>            
+            </div>
+            <!-- SUBMIT BUTTON -->
+            <input type="submit" value="Submit">
+          </fieldset>
+        </form>
+      </div>
+      <div class="col-lg-3 col-md-0 col-sm-0">
+      </div>
+    </div>
+  </div>  
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+  crossorigin="anonymous"></script>
+</body>

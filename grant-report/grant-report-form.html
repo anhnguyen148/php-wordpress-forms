@@ -1,0 +1,159 @@
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+  <style>
+    * {
+      font-size: 18px
+    }
+
+    .col-form-label,
+    label.form-label {
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    input.form-control,
+    textarea.form-control {
+      border-color: #D3D3D3;
+    }
+
+    .form-check-label {
+      line-height: 25px
+    }
+
+    label.section {
+      font-weight: 500;
+      font-size: x-large;
+    }
+    #letter1Box,
+    #letter2Box {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container pb-5">
+    <div class="row">
+      <div class="col-lg-3 col-md-0 col-sm-0">
+      </div>
+      <div class="col-lg-6 col-md-12 col-sm-12">
+        <form action="../../wp-admin/grant-report-form.php" method="POST" enctype="multipart/form-data">
+          <fieldset>
+            <div class="row pb-2">
+              <div class="pb-3">
+                <p><strong><i>*: required field</i></strong></p>
+                <label class="section pb-2">I. Contact Information</label><br />
+                <label for="orgName" class="form-label">1. Name of Organization: *</label>
+                <input type="text" name="org_name" id="orgName" class="form-control" placeholder="Enter here"
+                  required />
+              </div>
+              <div class="pb-3">
+                <label for="contactName" class="form-label">2. Name of Contact Person: *</label>
+                <input type="text" name="contact_name" id="contactName" class="form-control" placeholder="Enter here"
+                  required />
+              </div>
+              <div class="pb-3">
+                <label for="email" class="form-label">3. Email of Contact Person: *</label>
+                <input type="text" name="email" id="email" class="form-control" placeholder="example@gmail.com"
+                  required />
+              </div>
+              <div class="pb-3">
+                <label for="phone" class="form-label">4. Phone Number of Contact Person:* </label>
+                <input type="text" name="phone" id="phone" class="form-control" placeholder="Enter here" required />
+              </div>
+              <div class="pb-3">
+                <label for="address" class="form-label">5. Physical address of organization: *</label>
+                <input type="text" name="address" id="address" class="form-control" placeholder="Enter here"
+                  required />
+              </div>
+              <div class="pb-3">
+                <label for="addendum-num" class="form-label">6. Grant or Partnership/addendum number (please reference your
+                  contract for this number. Partners, please include the full partnership and addendum number found on
+                  the addendum for this specific project): *</label>
+                <input type="text" name="addendum_num" id="addendum-num" class="form-control" placeholder="Enter here" required />
+              </div>
+              <div class="pb-3">
+                <label class="section pb-2">II. Grant and Partnership Project Final Report Information</label><br />
+                <label for="desc" class="form-label">7. Please provide a description of what was accomplished with the support of MSNHA funding. This description will be used by the MSNHA on social media, on our website, other MSNHA digital publications (blog posts/newsletters) and may also be used in other partner organization's publications/social media outlets/websites. (300 words max) *</label>
+                <textarea name="desc" id="desc" class="form-control" placeholder="Enter here" required></textarea>
+              </div>
+              <div class="pb-3">
+                <label for="pictures" class="form-label">8. Please upload 2-3 pictures that best illustrate the work you accomplished with the support of MSNHA funding. will be used by the MSNHA on social media, on our website, other MSNHA digital publications (blog posts/newsletters) and may also be used in other partner organization's publications/social media outlets/websites.<i><strong> (jpg, jpeg, png, 2MB max size)</strong></i>. *<br><i>To attach multiple files, please hold Ctrl and left click on all files you want to include. All files must be uploaded at one time.</i></label>
+                <input class="pt-2" type="file" id="pictures" name="pictures[]" multiple required>
+              </div>
+              <div class="pb-3">
+                <label for="videos" class="form-label">9. If you have any videos you would like to share with the MSNHA to be used in social media, on the MSNHA website, YouTube Channel and other MSNHA digital outlets, please upload the video to YouTube and share the link here: </label>
+                <input type="text" name="videos" id="videos" class="form-control" placeholder="Enter here" />
+              </div>
+              <div class="pb-3">
+                <label for="docs" class="form-label">10. Please submit copies of event announcements, press releases, posters, social media posts, etc. that show acknowledgement of MSNHA support for the project. Such items may be added to the MSNHA institutional archive stored at the University of North Alabama.<i><strong> (pdf or image)</strong></i>.<br><i>To attach multiple files, please hold Ctrl and left click on all files you want to include. All files must be uploaded at one time.</i></label>
+                <input class="pt-2" type="file" id="docs" name="docs[]" multiple >
+              </div>
+              <div class="pb-3">
+                <label for="budget" class="form-label">11. Final Project Budget.<br/>Please upload completed <a href="https://msnha.una.edu/wp-content/uploads/2023/07/Grant-reporting-form-for-website.xlsx" target="_blank"><strong>final report budget spreadsheet</strong></a>, converting the spreadsheet to a <strong>PDF</strong> before submission. <br/>Please reference the <a href="https://msnha.una.edu/wp-content/uploads/2023/06/Grant-reporting-form-for-website-SAMPLE.pdf" target="_blank">SAMPLE SHEET</a> and the budget included in your grant or partnership contract.<br/>Please note that the expenses in the reimbursement and match categories MUST match the budget in your contract, UNLESS you have submitted a budget revision request to the MSNHA between the start date and end date of your project. If you have done so, please include a copy of the email from the MSNHA approving the budget revision. Overmatch must be matched to the appropriate category of overmatch from your original budget. Please note that the backup submitted (e.g. invoices, cancelled checks, volunteer timesheets, copies of contracts, etc.) must match those required in your original budget. If volunteer time was submitted electronically through the MSNHA volunteer/consultant QR code, please note this in the budget spreadsheet. *</label>
+                <input class="pt-2" type="file" id="budget" name="budget" required >
+                <div class="pt-2">
+                  <strong><i>*Reminder:</i></strong> Applicants must provide at least the dollar-for-dollar match to be reimbursed in whole for their project. Overmatch from categories listed in the contract budget must also be provided if such expenses were incurred or in kind contributions/volunteer time documented. Match & overmatch must be from non-federal sources, which include: foundation or private-sector grants, the grantee or partner organization's funds, project partners, in-kind non-cash contributions from professionals and/or volunteers/staff ($25.25/hour, $12.50/hour students participating as part of an enrolled-course assignment, verified hourly rate for professionals - please note that timesheets MUST be signed by the volunteer or submitted electronically through the QR code provided to the organization) or any combination thereof. In-kind contributions may be labor directly related to the project, services, materials, equipment, supplies, and/or travel expenses necessary for project objectives. Purchases of real property, overhead & general administrative costs don't count toward match. Matching & overmatching contributions must begin after the contract's start date and cannot be dated after the contract's conclusion.
+                </div>
+              </div>
+              <div class="pb-3">
+                <label class="section pb-2">III. Required additional uploads.</label><br />
+              <div class="pb-2">
+                <strong><i>*Note: </i></strong>Please convert all files to <strong>PDF format</strong> before uploading.
+              </div>
+                <label for="backup-docs" class="form-label">12. Grant and Partnership back up documentation (invoices, contracts, gig sheets, cancelled checks, in kind forms, timesheets, etc.): Please upload all back up materials organized in the order they appear in your contract and final report budget. Please make sure the backup matches the required backup documentation in your contract. We encourage grantees and partners to combine multiple documents into one large file, though individual files may be uploaded. *<br><i>To attach multiple files, please hold Ctrl and left click on all files you want to include. All files must be uploaded at one time.</i></label>
+                <input class="pt-2" type="file" id="backup-docs" name="backup_docs[]" multiple required>
+              </div>
+              <div class="pb-3">
+                <label for="invoice" class="form-label">13. Invoice: Please submit an invoice for reimbursement on your organization's letterhead. Please note that this total must match the total on your final report spreadsheet and the total in your contract with the MSNHA (unless project was under budget and the amount reimbursed is less than the contracted amount): *</label>
+                <input class="pt-2" type="file" id="invoice" name="invoice" required>
+              </div>
+              <div class="pb-3">
+                <label class="form-label">14. Letter of Support: </label><br/>
+
+                <input class="form-check-input" type="checkbox" id="type1" name="type1" value="grant-received" onchange="displayUploadField(this, 'letter1Box')">
+                <label for="type1"> My organization received a grant from the MSNHA.</label><br>
+
+                <div class="pt-2" id="letter1Box">
+                  <label for="letter1" class="form-label">If your organization received a grant from the MSNHA, you must include documentation that you shared news of your award and an overview of your project with the state and federal legislators who represent your community and/or the project area. This may be done through formal letters to the legislator's office or through email communication (contact the MSNHA at msnha@una.edu if you need a list of your representatives/senators). Please upload copies of your communications here. After submission of the final report, such communications will be shared with the University of North Alabama so that they are aware of the project and your outreach to legislators as well: *</label>
+                  <input class="pt-1" type="file" id="letter1" name="letter[]" >
+                </div>
+
+                <input class="form-check-input pt-3" type="checkbox" id="type2" name="type2" value="partnership" onchange="displayUploadField(this, 'letter2Box')">
+                <label for="type2"> My organization has a partnership with the MSNHA.</label><br>
+
+                <div class="pt-2" id="letter2Box">
+                  <label for="letter2" class="form-label">Many partners submit reimbursement requests monthly or quarterly. We do not require you to communicate with legislators upon each reimbursement request, but we do require you to do so once during the partnership addendum period. Contact the MSNHA at msnha@una.edu if you need a list of your representatives/senators. Please upload copies of your communications here in PDF format. After submission of the final report, such communications will be shared with the University of North Alabama so that they are aware of the project and your outreach to legislators as well: <i>(optional) </i></label>
+                  <input class="pt-1" type="file" id="letter2" name="letter[]">
+                </div>
+              </div>
+            </div>
+            <!-- SUBMIT BUTTON -->
+            <input type="submit" value="Submit">
+          </fieldset>
+        </form>
+      </div>
+      <div class="col-lg-3 col-md-0 col-sm-0">
+      </div>
+    </div>
+  </div>
+  <script>
+    const displayUploadField = (el, type) => {
+      var target = document.getElementById(type);
+      target.style.display = el.checked ? "block" : "none";
+      var letter1 = document.getElementById("letter1");
+      if (el.id == "type1") {
+        if (el.checked) {
+          letter1.setAttribute("required", "required");
+        } else {
+			    letter1.removeAttribute("required");
+        }
+      }      
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>

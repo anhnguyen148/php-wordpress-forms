@@ -1,0 +1,42 @@
+<div class="pb-3">
+  <label for="project" class="form-label">Project Name: </label>
+  <input type="text" name="project" id="project" class="form-control" placeholder="Enter here" required />
+  <ul id="autocomplete-list"></ul>
+</div>
+
+
+<script>
+  const projects = [
+    "Project A",
+    "Project B",
+    "Project C"
+  ];
+    
+  const project_input = document.getElementById('project');
+  const project_list = document.getElementById('autocomplete-list');
+    
+  project_input.addEventListener('input', function() {
+    const value = project_input.value.toLowerCase();
+    project_list.innerHTML = '';
+    
+    if (value.length === 0) {
+      return;
+    }
+    
+    const matches = projects.filter(project => project.toLowerCase().startsWith(value));
+    
+    matches.forEach(match => {
+      const li = document.createElement('li');
+      const boldMatch = document.createElement('strong');
+      const index = match.toLowerCase().indexOf(value);
+      boldMatch.textContent = match.substring(0, index) + match.substring(index, index + value.length);
+      li.appendChild(boldMatch);
+      li.innerHTML += match.substring(index + value.length);
+      li.addEventListener('click', function() {
+        project_input.value = match;
+        project_list.innerHTML = '';
+      });
+      project_list.appendChild(li);
+    });
+  });
+</script>

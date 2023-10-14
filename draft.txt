@@ -1,0 +1,29 @@
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+
+<script>
+    const mytable = document.getElementById("timesheet_table");
+    jQuery(document).ready(function() {
+      $(mytable).DataTable();
+    });
+  </script>
+
+  echo $org_name . "<br>";
+  echo $contact_name . "<br>";
+  echo $email . "<br>";
+  echo $phone . "<br>";
+  echo $address . "<br>";
+  echo $addendum_num . "<br>";
+  echo $desc . "<br>";
+  echo $video . "<br>";
+  print_r($pictures_path_array); 
+  echo "<br>"; 
+  print_r($docs_path_array);
+  echo "<br>";
+  echo $budget_path . "<br>";
+  print_r($backup_docs_array);
+  echo "<br>";
+  echo $invoice_path . "<br>";
+  echo $type1 . "<br>";
+  echo $grant_received_letter . "<br>";
+  echo $type2 . "<br>";
+  echo $partnership_path . "<br>";

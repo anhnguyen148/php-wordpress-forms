@@ -1,0 +1,108 @@
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+  <style>
+    * {
+      font-size: 18px
+    }
+
+    .col-form-label,
+    label.form-label {
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    input.form-control,
+    textarea.form-control {
+      border-color: #D3D3D3;
+    }
+
+    .form-check-label {
+      line-height: 25px
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container pb-5">
+    <div class="row">
+      <div class="col-lg-3 col-md-0 col-sm-0">
+      </div>
+      <div class="col-lg-6 col-md-12 col-sm-12">
+        <form action="../../wp-admin/project-assistance-form.php" method="POST" enctype="multipart/form-data">
+          <fieldset>
+            <div class="row pb-2">
+              <div class="pb-3">
+                <label for="orgName" class="form-label">Name of Organization: </label>
+                <input type="text" name="org_name" id="orgName" class="form-control" placeholder="Enter here"
+                  required />
+              </div>
+              <div class="pb-3">
+                <label for="contactName" class="form-label">Name of Contact Person: </label>
+                <input type="text" name="contact_name" id="contactName" class="form-control" placeholder="Enter here"
+                  required />
+              </div>
+              <div class="pb-3">
+                <label for="email" class="form-label">Email of Contact Person: </label>
+                <input type="text" name="email" id="email" class="form-control" placeholder="example@gmail.com"
+                  required />
+              </div>
+              <div class="pb-3">
+                <label for="phone" class="form-label">Phone Number of Contact Person: </label>
+                <input type="text" name="phone" id="phone" class="form-control" placeholder="Enter here" required />
+              </div>
+              <div class="pb-3">
+                <label for="website" class="form-label">Organization Website: </label>
+                <input type="text" name="website" id="website" class="form-control" placeholder="https://example.com/"
+                  required />
+              </div>
+              <div class="pb-3">
+                <label for="location" class="form-label">Project Location: </label>
+                <input type="text" name="location" id="location" class="form-control" placeholder="Enter here"
+                  required />
+              </div>
+              <div class="pb-3">
+                <label for="desc" class="form-label">Project Description: </label>
+                <textarea name="desc" id="desc" class="form-control" placeholder="Enter here" required></textarea>
+              </div>
+              <div class="pb-3">
+                <label for="assistance" class="form-label">What specifically do you need assistance with? </label>
+                <textarea name="assistance" id="assistance" class="form-control" placeholder="Enter here"
+                  required></textarea>
+              </div>
+              <div class="pb-3">
+                <label for="timeline" class="form-label">What is your timeline for completion of the project? </label>
+                <textarea name="timeline" id="timeline" class="form-control" placeholder="Enter here"
+                  required></textarea>
+              </div>
+              <div class="pb-3">
+                <label for="work" class="form-label">Has any work already been completed on the project? If so, please describe: </label>
+                <textarea name="work" id="work" class="form-control" placeholder="Enter here"
+                  required></textarea>
+              </div>
+              <div class="pb-3">
+                <label for="resources" class="form-label">Does the organization have financial resources to contribute to the project? </label>
+                <textarea name="resources" id="resources" class="form-control" placeholder="Enter here"
+                  required></textarea>
+              </div>
+              <div class="pb-3">
+                <label for="staff" class="form-label">Does the organization have volunteer and/or staff capacity to contribute to the project? If so, are staff and/or volunteers willing to document their time spent on the project? </label>
+                <textarea name="staff" id="staff" class="form-control" placeholder="Enter here"
+                  required></textarea>
+              </div>
+            </div>
+            <!-- SUBMIT BUTTON -->
+            <input type="submit" value="Submit">
+          </fieldset>
+        </form>
+      </div>
+      <div class="col-lg-3 col-md-0 col-sm-0">
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>

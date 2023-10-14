@@ -1,0 +1,489 @@
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+  <style>
+    * {
+      font-size: 18px
+    }
+
+    .col-form-label,
+    label.form-label {
+      font-weight: 500;
+    }
+
+    label.section {
+      font-weight: 500;
+      font-size: x-large;
+    }
+
+    #non-profit, #local, #school, #gov, #tourism, #other1,
+    #museum, #historic, #interpretation, #workshop, #history, #event, #art, #recreation, #environmental,
+    #tennessee, #music, #heritage, #other2
+    {
+      border-radius: 50%;
+    }
+    
+    .form-check-label div {
+        line-height: 1.5;
+    }
+
+    input.form-control,
+    textarea.form-control {
+      border-color: #D3D3D3;
+    }
+
+    .showModalBtn {
+      background-color: transparent !important;
+      color: black !important;
+      border: none;
+      text-decoration: none;
+      padding: 0px !important;
+    }
+
+    /* The Modal (background) */
+    .modal {
+      text-align: center;
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      padding-top: 100px;
+      /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.9);
+      /* Black w/ opacity */
+    }
+
+    /* Modal Content (image) */
+    .modal-content {
+      margin: auto;
+      display: block;
+      width: 100%;
+      max-width: 700px;
+    }
+
+    /* Caption of Modal Image */
+    #caption {
+      margin: auto;
+      display: block;
+      width: 80%;
+      max-width: 700px;
+      text-align: center;
+      color: #ccc;
+      padding: 10px 0px;
+      height: 150px;
+    }
+
+    /* Add Animation */
+    .modal-content,
+    #caption {
+      -webkit-animation-name: zoom;
+      -webkit-animation-duration: 0.6s;
+      animation-name: zoom;
+      animation-duration: 0.6s;
+    }
+
+    @-webkit-keyframes zoom {
+      from {
+        -webkit-transform: scale(0)
+      }
+
+      to {
+        -webkit-transform: scale(1)
+      }
+    }
+
+    @keyframes zoom {
+      from {
+        transform: scale(0)
+      }
+
+      to {
+        transform: scale(1)
+      }
+    }
+
+    /* The Close Button */
+    .close {
+      position: absolute;
+      top: 45px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* 100% Image Width on Smaller Screens */
+    @media only screen and (max-width: 700px) {
+      .modal-content {
+        width: 100%;
+      }
+    }
+
+    #other-organization,
+    #other-theme {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container pb-5">
+    <div class="row">
+      <div class="col-lg-3 col-md-0 col-sm-0"></div>
+      <div class="col-lg-6 col-md-12 col-sm-12">
+        <form action="../../wp-admin/grant-form.php" method="POST" enctype="multipart/form-data">
+          <fieldset>
+            <!-- Text area -->
+            <div class="pb-3">
+              National Heritage Areas are a program within the National Park Service. The Muscle Shoals National Heritage
+              Area, which operates under the University of North Alabama, was designated by Congress in 2009 to preserve
+              history & culture in the northwest Alabama counties connected to the Muscle Shoals stretch of the Tennessee
+              River: Colbert, Franklin, Lauderdale, Lawrence, Limestone & Morgan. We work on projects connected to the
+              preservation and interpretation of natural, cultural and historical resources in our six counties. The three
+              themes the MSNHA focuses on are the Tennessee River, Music, and Native American Heritage. <br /><br />
+              Grants are <strong>reimbursable</strong> in amounts of $1,000 to $7,500. Grants require a 1:1 match.
+            </div>
+            <div class="pb-3">
+              <label class="section pb-2">I. Contact Information</label><br />
+              <div class="pb-3">
+                <i><strong>
+                    *Note:
+                  </strong>Organization and the project must be located within the MSNHA (Colbert, Franklin, Lauderdale,
+                  Limestone, Lawrence, and Morgan)</i>
+              </div>
+              <label for="organization" class="form-label">Name of organization:</label>
+              <input name="organization" type="text" id="organization" class="form-control" placeholder="Enter here"
+                required />
+            </div>
+            <div class="pb-3">
+              <label for="contact" class="form-label">Name of primary contact: </label>
+              <input name="contact" type="text" id="contact" class="form-control" placeholder="Enter here" required />
+            </div>
+            <div class="pb-3">
+              <label for="email" class="form-label">Email address of primary contact:</label>
+              <input name="email" type="text" id="email" class="form-control" placeholder="example@gmail.com" required />
+            </div>
+            <div class="pb-3">
+              <label for="phone" class="form-label">Phone number of primary contact:</label>
+              <input name="phone" type="number" id="phone" class="form-control" placeholder="Enter here" required />
+            </div>
+            <div class="pb-3">
+              <label for="address" class="form-label">Physical address of organization:</label>
+              <input name="address" type="text" id="address" class="form-control" placeholder="Enter here" required />
+            </div>
+
+            <div class="pb-3">
+              <label class="section pb-2">II. Type of Organization</label><br />
+              <div>
+                <i><strong>
+                    *Note:
+                  </strong>Individuals are not eligible to apply for grants.</i>
+              </div>
+              <div class="form-check pt-2">
+                <input class="round-radio form-check-input" type="radio" name="organizationType" id="non-profit" value="none profit"
+                  onchange="otherType(this.value)" checked />
+                <label class="form-check-label" for="non-profit">
+                  Not for profit organization
+                </label>
+              </div>
+              <div class="form-check pt-2">
+                <input class="form-check-input" type="radio" name="organizationType" id="local" value="local business"
+                  onchange="otherType(this.value)" />
+                <label class="form-check-label" for="local">
+                  Local business
+                </label>
+              </div>
+              <div class="form-check pt-2">
+                <input class="form-check-input" type="radio" name="organizationType" id="school" value="school"
+                  onchange="otherType(this.value)" />
+                <label class="form-check-label" for="school">
+                  School (primary, secondary, college/university)
+                </label>
+              </div>
+              <div class="form-check pt-2">
+                <input class="form-check-input" type="radio" name="organizationType" id="gov" value="gov"
+                  onchange="otherType(this.value)" />
+                <label class="form-check-label" for="gov">
+                  City/county government
+                </label>
+              </div>
+              <div class="form-check pt-2">
+                <input class="form-check-input" type="radio" name="organizationType" id="tourism" value="tourism office"
+                  onchange="otherType(this.value)" />
+                <label class="form-check-label" for="tourism">
+                  Tourism Office/Chamber of Commerce
+                </label>
+              </div>
+              <div class="form-check pt-2">
+                <input class="form-check-input" type="radio" name="organizationType" id="other1" value="other"
+                  onchange="otherType(this.value)" />
+                <label class="form-check-label" for="other-organization">
+                  Other
+                </label>
+                <input name="other-organization" id="other-organization" type="text"
+                  placeholder="Please provide more information" />
+              </div>
+            </div>
+
+            <div class="pb-3">
+              <label class="section pb-2">III. Type of Project</label><br />
+              <div class="form-check pt-2">
+                <input class="form-check-input" type="radio" name="projectType" id="museum" value="museum" checked />
+                <label class="form-check-label" for="museum">
+                  <div><strong>Museum and Archival Collection Assessment</strong> - Hiring a consultant to address preservation needs or problems
+                    such as establishing environmental monitoring programs and developing plans for improving environmental
+                    conditions, security, or fire protection for museum or archival collections</div>
+                </label>
+              </div>
+              <div id="projectTypeContent"></div>
+            </div>
+
+            <div class="pb-3">
+              <label class="section pb-2">IV. What MSNHA theme (or themes) is your project connected to?</label><br />
+              <div class="form-check pt-2">
+                <input class="form-check-input" type="radio" name="theme" id="tennessee" value="tennessee"
+                  onchange="otherTheme(this.value)" checked />
+                <label class="form-check-label" for="tennessee">
+                  The Tennessee River
+                </label>
+              </div>
+              <div class="form-check pt-2">
+                <input class="form-check-input" type="radio" name="theme" id="music" value="music"
+                  onchange="otherTheme(this.value)" />
+                <label class="form-check-label" for="music">
+                  Music
+                </label>
+              </div>
+              <div class="form-check pt-2">
+                <input class="form-check-input" type="radio" name="theme" id="heritage" value="heritage"
+                  onchange="otherTheme(this.value)" />
+                <label class="form-check-label" for="heritage">
+                  Native American Heritage
+                </label>
+              </div>
+              <div class="form-check pt-2">
+                <input class="form-check-input" type="radio" name="theme" id="other2" value="other"
+                  onchange="otherTheme(this.value)" />
+                <label class="form-check-label" for="other-theme">
+                  I'm not sure
+                </label>
+                <input name="other-theme" id="other-theme" type="text" placeholder="Please explain" />
+              </div>
+            </div>
+
+            <div class="pb-3">
+              <label class="section pb-2">V. Grant Project</label><br />
+              <label for="desc" class="form-label">Description of grant project (300 word max)</label>
+              <textarea name="desc" id="desc" class="form-control" placeholder="Enter here" maxlength="1600" required></textarea>
+              <div class="pt-2">
+                <label for="startDate" class="col-form-label">Start date:</label>
+                <div class="input-group date" id="startDatePicker">
+                  <input name="startDate" type="date" class="form-control" id="startDate" required />
+                </div>
+              </div>
+              <div class="pt-2">
+                <label for="endDate" class="col-form-label">End date:</label>
+                <div class="input-group date" id="endDatePicker">
+                  <input name="endDate" type="date" class="form-control" id="endDate" required />
+                </div>
+              </div>
+              <div class="pt-2">
+                <i><strong>
+                    *Note:
+                  </strong>Please note that expenses paid for before or after these dates cannot count as match or be
+                  reimbursed. MSNHA grant projects have a maximum project period of one year.</i>
+              </div>
+              <div class="pt-2" id="budget">
+                <label for="budget" class="col-form-label">Grant Budget:</label>
+                <input type="file" id="budget" name="budget" required><br />
+                <div>
+                    
+                  <i><strong>*Note: </strong>Upload completed budget spreadsheet (pdf only). <a href="https://msnha.una.edu/wp-content/uploads/2023/06/Grant-spreadsheet.xlsx" target="_blank">Download form here</a>.<br /> Please reference the sample sheet
+                    <button id="showModalButton" class="showModalBtn" onclick="showModal()">HERE</button>.
+                  </i>
+                </div>
+                <div>
+                  <i><strong>**Note: </strong>Applicants must provide at least a dollar-for-dollar match; we encourage
+                    overmatch (anything over the dollar-for-dollar match). Match & overmatch must be from non-federal
+                    sources: foundation or private-sector grants, the applicant organization, project partners, in-kind
+                    non-cash contributions from professionals and/or volunteers ($25.25/hour, $12.50/hour students
+                    participating as part of an enrolled-course assignment, verified hourly rate for professionals) or any
+                    combination thereof. In-kind contributions may be labor, services, materials, equipment, supplies,
+                    and/or travel expenses necessary for project objectives. Purchases of real property, overhead & general
+                    administrative costs don't count toward matches. Matching & overmatching contributions must begin after
+                    grant's award date.
+                  </i>
+                </div>
+                <div id="myModal" class="modal">
+                  <span class="close">&times;</span>
+                  <img src="https://msnha.una.edu/wp-content/uploads/2023/06/sample.png" id="img01">
+                  <div id="caption">Grant Spreadsheet Sample</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="pb-3">
+              <label class="section pb-2">VI. Required additional uploads (PDF only)</label><br />
+              <div class="pt-2"><strong>1.</strong>
+                Vendors quotes for any expenses to be reimbursed or expenses used as match:<br/><i>(<strong>Note:
+                  </strong>You can choose multiple documents)</i><br><i>To attach multiple files, please hold Ctrl and left click on all files you want to include. All files must be uploaded at one time.</i><br />
+                <input class="pt-2" type="file" id="vendorQuote" name="vendorQuote[]" multiple required>
+              </div>
+              <div class="pt-2"><strong>2.</strong>
+                IRS W9: <a href="https://www.irs.gov/pub/irs-pdf/fw9.pdf" target="_blank">Download form here</a><br />
+                <input class="pt-2" type="file" id="IRS" name="IRS" required/>
+              </div>
+              <div class="pt-2"><strong>3.</strong>
+                Signed & notarized copy of State of Alabama Disclosure Statement, if project budget exceeds $5000. Also mail
+                original, with clearly legible notary's seal, to MSNHA:<br />
+                <a role="button" href="https://msnha.una.edu/wp-content/uploads/2023/06/Disclosure-Statement.pdf"
+                  target="_blank">Download form here</a><br />
+                <input class="pt-2" type="file" id="disclosure" name="disclosure" />
+              </div>
+              <div class="pt-2"><strong>4.</strong>
+                Copy of IRS determination letter indicating 501(c)(3) tax-exempt status if applicable:<br />
+                <input class="pt-2" type="file" id="tax-exempt" name="tax-exempt" />
+              </div>
+              <div class="pt-2"><strong>5.</strong>
+                Letter signed by your organization's financial officer or authorized representative verifying amounts and
+                sources of the one-to-one matching funds:<br />
+                <input class="pt-2" type="file" id="verifiedLetter" name="verifiedLetter" required />
+              </div>
+            </div>
+            <!-- SUBMIT BUTTON -->
+            <input type="submit" value="Submit">
+          </fieldset>
+        </form>
+      </div>
+      <div class="col-lg-3 col-md-0 col-sm-0"></div>
+    </div>
+  </div>
+
+  <script>
+    var sampleSheetModal = document.getElementById("myModal");
+    var openModalButton = document.getElementById("showModalButton");
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    function showModal() {
+      event.preventDefault();
+      sampleSheetModal.style.display = "block";
+      modalImg.style.width = "50%";
+    };
+
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function () {
+      sampleSheetModal.style.display = "none";
+    };
+
+    // script to display text field for other organization
+    const otherType = (type) => {
+      var ortherType = document.getElementById("other-organization");
+      switch (type) {
+        case "other":
+          ortherType.style.display = "block";
+          ortherType.setAttribute("required", "required");
+          break;
+        default:
+          ortherType.style.display = "none";
+          ortherType.removeAttribute("required");
+          break;
+      }
+    };
+
+    // script to display text field for other theme
+    const otherTheme = (theme) => {
+      var otherTheme = document.getElementById("other-theme");
+      switch (theme) {
+        case "other":
+          otherTheme.style.display = "block";
+          otherTheme.setAttribute("required", "required");
+          break;
+        default:
+          otherTheme.style.display = "none";
+          otherTheme.removeAttribute("required");
+          break;
+      }
+    };
+
+    const projectTypesList = [
+      {
+        id: "historic",
+        type: "Historic Preservation",
+        content: " - Purchasing supplies and paying labor costs for historic preservation projects. Note: most historic preservation project must undergo Section 106 evaluation by the Alabama Historical Commission"
+      },
+      {
+        id: "interpretation",
+        type: "Interpretation",
+        content: " - Enhancing museums & sites by developing document/volunteer training programs, cataloging & researching collections, writing exhibit text & other interpretive materials, developing long-term interpretive plans, installing interpretative panels, researching & installing historical markers and developing & printing educational materials. Interpretation may also be related to natural resources."
+      },
+      {
+        id: "workshop",
+        type: "Workshops",
+        content: " - Funding workshops & training sessions for staff, volunteers & others connected to the preservation, conservation, and interpretation of natural, cultural, and historical resources."
+      },
+      {
+        id: "history",
+        type: "Local History and Archiving",
+        content: " - National & State Historic Register Nominations; developing cemetery restoration programs; digitizing documents and photos; and preserving collections such as books & journals, archives & manuscripts, prints & photographs, moving images, sound recordings, architectural & cartographic records, decorative & fine art objects, textiles, archaeological & ethnographic artifacts, furniture and historical objects."
+      },
+      {
+        id: "event",
+        type: "Event",
+        content: " - includes plays connected to the history and culture of the MSNHA, walking or driving tours, talks by professionals connected to the natural, cultural, and historical resources of the MSNHA, festivals that have a connection to one of the MSNHA themes."
+      },
+      {
+        id: "art",
+        type: "Musical productions and art projects",
+        content: " - Presenting performances and showings that are related to MSNHA's historical and cultural themes and open to the public."
+      },
+      {
+        id: "recreation",
+        type: "Recreation Planning and Programming",
+        content: " - Planning projects for hiking/running/biking trails, water access points on the Tennessee River and tributaries for kayaking/canoeing, park improvements, and other planning projects connected to recreation. Programming for recreation events (e.g. paying a facilitator to lead a kayak instruction workshop) and purchase of recreation equipment (e.g. mountain bikes/kayaks/stand up paddle boards)."
+      },
+      {
+        id: "environmental",
+        type: "Environmental",
+        content: " - Research projects on the MSNHA’s ecosystems, development of pollinator habitat/native plant gardens, native habitat restoration projects, environmental stewardship events, and environmental review for federally-funded projects."
+      }
+
+    ];
+
+    projectTypesList.forEach((el) => {
+      document.getElementById("projectTypeContent").innerHTML += `
+            <div class="form-check pt-2">
+                <input class="form-check-input" type="radio" name="projectType" id="${el.id}"
+                    value="${el.id}" />
+                <label class="form-check-label" for="${el.id}">
+                    <div><strong>${el.type}</strong>${el.content}</div>
+                </label>
+            </div>
+            `;
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+  </script>
+</body>

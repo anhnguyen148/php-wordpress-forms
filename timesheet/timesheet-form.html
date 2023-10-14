@@ -1,0 +1,205 @@
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+  <style>
+    * {
+      font-size: 18px
+    }
+
+    .col-form-label,
+    label.form-label {
+      font-weight: 500;
+    }
+
+    input.form-control,
+    textarea.form-control {
+      border-color: #D3D3D3;
+    }
+
+    #volunteer,
+    #consultant,
+    #employee {
+      border-radius: 50%;
+    }
+
+    .form-check-label {
+      line-height: 25px
+    }
+
+    /* #invoiceBox, */
+    #rateBox {
+      display: none;
+    }
+
+    #autocomplete-list {
+      list-style-type: none;
+      padding: 0;
+      width: 100%;
+    }
+    
+    #autocomplete-list li {
+      padding: 10px;
+      cursor: pointer;
+      border: 1px solid lightgrey;
+    }
+    
+    #autocomplete-list li:hover {
+      background-color: lightgray;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container pb-5">
+    <div class="row">
+      <div class="col-lg-3 col-md-0 col-sm-0">
+      </div>
+      <div class="col-lg-6 col-md-12 col-sm-12">
+        <form action="../../wp-admin/timesheet-form.php" method="POST" enctype="multipart/form-data">
+          <fieldset>
+            <div class="row pb-2">
+              <div class="pb-3">
+                <i><strong>Please report your time daily.</strong><br/>Different projects must be reported in separate time entries. Please use the project name provided to you by the MSNHA.</i>
+              </div>
+              
+              <!-- Name textbox-->
+              <div class="pb-3">
+                <label for="employeeName" class="form-label">Name: </label>
+                <input type="text" name="employee_name" id="employeeName" class="form-control" placeholder="Enter here" required />
+              </div>
+
+              <!-- Email textbox-->
+              <div class="pb-3">
+                <label for="email" class="form-label">Email Address:</label>
+                <input name="email" type="text" id="email" class="form-control" placeholder="example@gmail.com" required />
+              </div>
+
+              <!-- Radio box  -->
+              <div class="col-12 pt-2">
+                <label class="form-label">Choose One:</label>
+                <div class="form-check pt-2">
+                  <input class="form-check-input" type="radio" name="position" id="volunteer" value="volunteer"
+                    onchange="displayQuestion(this.value)" checked />
+                  <label class="form-check-label" for="volunteer">
+                    I am a volunteer. The MSNHA volunteer rate is $25.25. 
+                  </label>
+                </div>                
+                <div class="form-check pt-2">
+                  <input class="form-check-input" type="radio" name="position" id="consultant" value="consultant"
+                    onchange="displayQuestion(this.value)" >
+                  <label class="form-check-label" for="consultant">
+                    I am a MSNHA consultant and this time is above my contracted time with the MSNHA.
+                  </label>
+                </div>
+                <div class="form-check pt-2">
+                  <input class="form-check-input" type="radio" name="position" id="employee" value="employee"
+                    onchange="displayQuestion(this.value)">
+                  <label class="form-check-label" for="employee">
+                    I am a non-federal employee of an organization and am completing this work as part of my
+                    responsibilities of my organization in partnership with.
+                  </label>
+                </div>
+              </div>
+
+              <!-- Hourly rate -->
+              <div class="pb-3" id="rateBox">
+                <div>
+                  <label for="rate" class="col-form-label">My Hourly Rate Is: </label>
+                  <input name="rate" type="text" class="form-control" id="rate" placeholder="$0.00"/>
+                </div>
+              </div>
+
+              <!-- Invoice for MSNHA consultant -->
+              <!-- <div class="pb-3" id="invoiceBox">              
+                <label for="invoiceImg" class="col-form-label">Invoice For Paid Time:</label><br />
+                <i><strong>*Note: </strong>If you are a MSNHA consultant, required upload of invoice for paid time. <strong>(pdf or image)</strong><br /></i>
+                <input type="file" id="invoiceImg" name="invoiceImg">
+              </div> -->
+
+              <!-- Date time picker -->
+              <div class="pb-3">
+                <div>
+                  <label for="workingDate" class="col-form-label">Working Date: </label>              
+                  <div class="input-group date" id="workingDatePicker">
+                    <input name="date" type="date" class="form-control" id="workingDate" required />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Text area -->
+              <div class="pb-3">
+                <label for="project" class="form-label">Project Name: </label>
+                <div><i><strong>*Note:</strong> Project name provided by MSNHA. Please report each project separately.</i></div>
+                <input type="text" name="project" id="project" class="form-control" placeholder="Enter here" required />
+              </div>
+              
+              <div class="pb-3">
+                <label for="time" class="form-label">Length of Time: </label>
+                <input name="time" type="text" id="time" class="form-control" placeholder="Enter here" required/>
+              </div>
+              <div class="pb-3">
+                <label for="description" class="form-label">Description of Work:</label>
+                <textarea name="description" id="description" class="form-control" placeholder="Sample entry: Organized digital images from project into files to share with MSNHA team." required></textarea>
+
+                <div class="pt-1">
+                  <i><strong>*Note: </strong>If attended a meeting, required upload of agenda: <strong>(pdf or image)</strong><br /></i>
+                  <input type="file" id="agenda" name="agendaImg">
+                </div>
+              </div>
+              <div class="pb-3">
+                <label for="miles" class="form-label">Miles Traveled:</label>
+                <input name="miles" type="text" id="miles" class="form-control" placeholder="0" onchange="mileImgUpload(this.value)"/>
+
+                <div class="pt-1">
+                  <i><strong>*Note: </strong>If miles are entered, required upload of Google Map showing starting and ending location: <strong>(pdf or image)</strong><br /></i>
+                  <input type="file" id="mileageImg" name="mileageImg">
+                </div>
+              </div>
+            </div>
+            <input type="submit" value="Submit">
+          </fieldset>
+        </form>
+      </div>
+      <div class="col-lg-3 col-md-0 col-sm-0">
+      </div>
+    </div>
+  </div>  
+  <script>
+    const displayQuestion = (answer) => {
+      var rate = document.getElementById("rate");
+      var rateBox = document.getElementById("rateBox");
+      // var invoiceImg = document.getElementById("invoiceImg");
+      // var invoiceBox = document.getElementById("invoiceBox");
+      switch (answer) {
+        case "consultant":
+        rateBox.style.display = "block";
+        rate.setAttribute("required", "required");
+        // invoiceImg.setAttribute("required", "required");
+        // invoiceBox.style.display = "block";
+        break;
+        case "employee":
+        rate.setAttribute("required", "required");
+        rateBox.style.display = "block";
+        // invoiceBox.style.display = "none";
+        break;
+        default:
+        rate.removeAttribute("required");
+        rateBox.style.display = "none";
+        // invoiceBox.style.display = "none";
+        break;
+      }
+    };
+    function mileImgUpload(answer) {
+      var mileageImg = document.getElementById("mileageImg");
+      if ((answer == "") || (answer == 0)) {
+        mileageImg.removeAttribute("required");
+      } else {
+        mileageImg.setAttribute("required", "required");
+      }
+    };
+    </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+  crossorigin="anonymous"></script>
+</body>
